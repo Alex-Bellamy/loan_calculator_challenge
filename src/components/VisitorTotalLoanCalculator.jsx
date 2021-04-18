@@ -48,7 +48,8 @@ const VisitorTotalLoanCalculator = () => {
       initial.reduce((total, loan) => {
         return total + Number(loan.apr);
       }, 0) / initial.length;
-    setTotalApr(totalApr);
+    let aprRounded = Math.round(totalApr * 100) / 100;
+    setTotalApr(aprRounded);
   };
 
   return (
@@ -76,11 +77,11 @@ const VisitorTotalLoanCalculator = () => {
               </div>
               <div class="tableBody">
                 {initial.map((loan, index) => (
-                  <div class="tableRow" key={index}>
+                  <div data-cy="loanForm" class="tableRow" key={index}>
                     <div class="tableData">
                       <input
-                      div
-                      class="inputField"
+                        div
+                        class="inputField"
                         name="name"
                         placeholder="Creditor name"
                         data-id={index}
@@ -92,39 +93,39 @@ const VisitorTotalLoanCalculator = () => {
                     </div>
                     <div className="tableData">
                       <input
-                      div
-                      class="inputField"
+                        div
+                        class="inputField"
                         name="loanAmount"
                         placeholder="Total loan amount"
                         data-id={index}
                         data-cy="loanAmount"
-                        type="number"
+                        type="text"
                         value={loan.loanAmount}
                         onChange={handleLoanChanges}
                       />
                     </div>
                     <div class="tableData">
                       <input
-                      div
-                      class="inputField"
+                        div
+                        class="inputField"
                         name="monthlyFees"
                         placeholder="Monthly fees"
                         data-id={index}
                         data-cy="monthlyFees"
-                        type="number"
+                        type="text"
                         value={loan.monthlyFees}
                         onChange={handleLoanChanges}
                       />
                     </div>
                     <div class="tableData">
                       <input
-                      div
-                      class="inputField"
+                        div
+                        class="inputField"
                         name="apr"
                         placeholder="APR"
                         data-id={index}
                         data-cy="apr"
-                        type="number"
+                        type="text"
                         value={loan.apr}
                         onChange={handleLoanChanges}
                       />
@@ -134,7 +135,8 @@ const VisitorTotalLoanCalculator = () => {
                 <div class="tableRow">
                   <div class="tableData">
                     <button
-                    id="saveButton"
+                      data-cy="button"
+                      id="saveButton"
                       onClick={() => {
                         addAdditionalLoan();
                         getTotalLoanAmount();
@@ -147,13 +149,19 @@ const VisitorTotalLoanCalculator = () => {
                   </div>
                 </div>
                 <div class="tableFooter">
-                  <div class="tableRow">
+                  <div data-cy="loanTotals" class="tableRow">
                     <div class="tableData">
                       <div>Totals:</div>
                     </div>
-                    <div class="tableData">{totalLoanAmount}</div>
-                    <div class="tableData">{totalMonthlyFees}</div>
-                    <div class="tableData">{totalApr}</div>
+                    <div data-cy="totalLoanAmount" class="tableData">
+                      {totalLoanAmount}
+                    </div>
+                    <div data-cy="totalMonthlyFees" class="tableData">
+                      {totalMonthlyFees}
+                    </div>
+                    <div data-cy="totalApr" class="tableData">
+                      {totalApr}
+                    </div>
                   </div>
                 </div>
               </div>

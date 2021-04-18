@@ -3,14 +3,14 @@
   height: 75vh;
   background-color: #f7f5f2;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #2c3845;
 }
 
 #title {
   font-family: "Times New Roman", Times, serif;
   font-size: 3rem;
-  padding-bottom: 1rem;
+  padding: 3.5rem 0 0 0;
   margin-left: 4rem;
 }
 
@@ -50,7 +50,7 @@
 .inputField {
   padding: 0.25rem 0.25rem 0.25rem 0.25rem;
   background-color: #f7f5f2;
-  border: #7c7975 solid 0.15rem;
+  border: #cac6c2 solid 0.15rem;
   border-radius: 3px;
   outline: none;
 }
