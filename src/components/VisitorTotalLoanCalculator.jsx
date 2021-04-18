@@ -13,6 +13,7 @@ const VisitorTotalLoanCalculator = () => {
   const [initial, setInitial] = useState(initialValues);
   const [totalLoanAmount, setTotalLoanAmount] = useState("");
   const [totalMonthlyFees, setTotalMonthlyFees] = useState("");
+  const [totalApr, setTotalApr] = useState("");
 
   const handleLoanChanges = (e) => {
     const updatedValues = [...initial];
@@ -39,6 +40,14 @@ const VisitorTotalLoanCalculator = () => {
       return total + Number(loan.monthlyFees);
     }, 0);
     setTotalMonthlyFees(totalFees);
+  };
+
+  const getTotalApr = () => {
+    let totalApr =
+      initial.reduce((total, loan) => {
+        return total + Number(loan.apr);
+      }, 0) / initial.length;
+    setTotalApr(totalApr);
   };
 
   return (
@@ -102,6 +111,7 @@ const VisitorTotalLoanCalculator = () => {
                       addAdditionalLoan();
                       getTotalLoanAmount();
                       getTotalFees();
+                      getTotalApr();
                     }}
                   >
                     Save
@@ -115,6 +125,7 @@ const VisitorTotalLoanCalculator = () => {
                   </div>
                   <div class="tableData">{totalLoanAmount}</div>
                   <div class="tableData">{totalMonthlyFees}</div>
+                  <div class="tableData">{totalApr}</div>
                 </div>
               </div>
             </div>
